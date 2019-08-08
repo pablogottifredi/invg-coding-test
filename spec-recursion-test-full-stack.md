@@ -1,6 +1,6 @@
 # Invg Test. Recursion Test
 Instruction for oriented programming and recursion test. Fullstack developer profile
-Related to [main document](../readme.md) 
+Related to [main document](../Readme.md) 
 
 ## Goals
 Write here

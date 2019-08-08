@@ -1,6 +1,6 @@
 # Invg Test. Implementation Test
 Instruction for coding test. Fullstack developer profile
-Related to [main document](../readme.md) 
+Related to [main document](../Readme.md) 
 
 ## Goals
 Write here
