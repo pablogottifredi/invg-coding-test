@@ -21,7 +21,7 @@
 * Test solution here
 
 ### Tests
-* Compose an sentence
+* Compose a sentence
   - [ ] Group a set of data according the spec
 
 
