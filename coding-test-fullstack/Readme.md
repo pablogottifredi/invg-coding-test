@@ -1,11 +1,9 @@
-
-# Api Invgate extension
+# Invg Test. Api Invgate extension
 
 Provide a solution according the follow [spec](https://github.com/pablogottifredi/invg-coding-test/blob/master/spec-coding-test-full-stack.md)
 
-  
 
-# Requirements
+## Requirements
 
 Install this pre-requisites and follow the steps
 
@@ -18,9 +16,9 @@ Need more help? Follow this instruction for [beginners users](https://github.com
 
   
 
-# Getting started
+## Getting started
 
-## 1. Get from repo
+### 1. Get from repo
 
 Clone using your own credentials from repo [https://github.com/pablogottifredi/invg-coding-test.git](https://github.com/pablogottifredi/invg-coding-test.git)
 
@@ -31,7 +29,7 @@ $ git clone https://github.com/pablogottifredi/invg-coding-test.git
 
   
 
-## 2. Access to subfolder
+### 2. Access to subfolder
 
 ```
 $ cd invg-coding-test
@@ -40,7 +38,7 @@ $ cd invg-coding-test
 
   
 
-## 3. Config your .env file
+### 3. Config your .env file
 
 Copy .env.example and edit with the credentials provided
 
@@ -63,7 +61,7 @@ API_AUTH_METHOD=basic
 
   
 
-## 4. Run using docker-compose
+### 4. Run using docker-compose
 
 All the environment is ready to use without aditional install
 
@@ -82,7 +80,7 @@ Ready!
 
   
 
-# Environment info
+## Environment info
 Docker compose create a enviroment with
 
 * An ***API Restfull*** in NodeJS v12 with endpoin required
@@ -91,7 +89,7 @@ Docker compose create a enviroment with
 
   
 
-## Problem with ports?
+### Problem with ports?
 
 When you launch **docker-compose up -d**, the project use the config in [docker-compose.yml](./api/docker-compose.yml) and [docker-compose.override.yml](./api/docker-compose.override.yml)
 
@@ -133,7 +131,7 @@ This project **only needs the api gateway port opened***. If you have ports list
 
   
 
-## Name of containers and networks
+### Name of containers and networks
 
 We use ***stronger names*** to containers, you could have problems if you have duplicated names
 
@@ -142,7 +140,7 @@ We use ***stronger names*** to containers, you could have problems if you have d
 * API Gateway use ***api-invgate-gateway***
 
   
-### Do you need see logs?
+#### Do you need see logs?
 Open a terminal with each log
 
  
@@ -158,7 +156,7 @@ $ docker container logs api-invgate-gateway -f
 
   
 
-## How to test?
+### How to test?
 
 You can test the api using [CURL](https://curl.haxx.se/docs/manpage.html)
 
