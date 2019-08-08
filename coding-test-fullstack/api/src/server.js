@@ -13,7 +13,7 @@ const api = express();
 api.use(cors());
 api.use(compression()); 
 api.use(bodyParser.urlencoded({ extended: true }));
-api.use(bodyParser.json());
+api.use(bodyParser.json()); 
 api.use(expressValidator());
 api.use(function(req,res,next){
 	console.log(req.url);

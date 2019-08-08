@@ -16,9 +16,9 @@ services:
     ports:
       - "5001:8080"
     volumes:
-      - ./doc/openapi.json:/openapi.json
+      - ./doc/invgate.api.v2.openapi.json:/invgate.api.v2.openapi.json
     environment:
-      SWAGGER_JSON: /openapi.json
+      SWAGGER_JSON: /invgate.api.v2.openapi.json
     networks:
       - api-invgate-backend-network
 
@@ -27,4 +27,4 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "5003:80"
-      - "80:80"
+    

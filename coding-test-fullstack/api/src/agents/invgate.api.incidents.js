@@ -25,6 +25,11 @@ var helpdeskById = ( helpdesk_id ) => {
             info: Joi.string().required(),
             requestIds: Joi.array().items(Joi.number())
         });
+        const errorSchema = Joi.object().keys( {
+            error: Joi.string().required(),
+            status: Joi.number().required()
+        });
+
         const trnx = uuid(options);
         console.log('request', 'start', trnx,  process.env.LOG_LEVEL=='verbose'?options:options.uri);
         request( options ) 
@@ -32,17 +37,26 @@ var helpdeskById = ( helpdesk_id ) => {
                 console.log('request', 'response', trnx, process.env.LOG_LEVEL=='verbose'?response:'');
                 Joi.validate( response, responseSchema, (err,value)=>{
                     if (err) {
-                        console.error({ code: 500, message: "agent schema invalid"} );
-                        reject( { code: 500, message: "agent schema invalid"} );
+                        console.error('request', 'error', trnx, "agent schema response invalid", err.details);
+                        reject( { code: 500, message: "agent schema response invalid"} );
                     } else {
                         resolve(JSON.parse(response));
                     }
                 });
                 
             })
-            .catch(function(err){
-                console.error('request', 'error', trnx, process.env.LOG_LEVEL=='verbose'?err:err.statusCode || 500);
-                reject( { code: err.statusCode || 500, message: err }  );
+            .catch(function(responseError){
+                console.error('request', 'error', trnx, process.env.LOG_LEVEL=='verbose'?responseError:responseError.statusCode);
+                let errR = responseError.error;
+                Joi.validate( errR, errorSchema, (err,value) => {
+                    if (err) {
+                        console.error('request', 'error', trnx, "agent schema response invalid", err.details);
+                        reject( { code: 500, message: "agent schema error invalid"} );
+                    } else {
+                        reject( { code: value.status || 500, message: value.error }  );
+                    }
+                });
+            
             });
     });
 };
