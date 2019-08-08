@@ -2,7 +2,7 @@
 
 ## Section 1. Implementation Test - Coding - coding-test-fullstack
 * [Follow the full spec here](spec-coding-test-full-stack.md)
-* Test solution here
+* [Test solution here](coding-test-full-stack/Readme.md)
 
 ### Tests
 * Build an api with two enpoints:

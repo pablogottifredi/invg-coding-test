@@ -1,7 +1,7 @@
 # Invg Test. Modeling Test
 Instruction for modeling test. Fullstack developer profile
-Related to [main document](../Readme.md) 
 
+Related to [main document](https://github.com/pablogottifredi/invg-coding-test/Readme.md)
 ## Goals
 Write here
 
