@@ -1,4 +1,6 @@
-# Data querying test spec. Fullstack developer
+# Invg Test. Query Test
+Instruction for query test. Fullstack developer profile
+Related to [main document](../readme.md) 
 ## Goals
 Write here
 

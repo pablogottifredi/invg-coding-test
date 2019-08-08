@@ -1,10 +1,14 @@
-# Modeling a Pet. Fullstack developer
+# Invg Test. Modeling Test
+Instruction for modeling test. Fullstack developer profile
+Related to [main document](../readme.md) 
+
 ## Goals
 Write here
 
 ## Spec
-Provide a class design to represent the types and methods required for run a Pet behaviour
-Optionaly provide a source code with the design proposed
+Provide a class design to represent the types and methods required to run a Pet behavior 
+
+Optionally provide source code with the design proposed
 
 ### Espected behaviour
 
@@ -26,6 +30,9 @@ Optionaly provide a source code with the design proposed
 
 ### Desired design features
 Additionaly to awake or sleep state, the pet must have a feel property, like happy/sad/other.
+
 If the feel property is setted in happy, when run the noise function, they laught
+
 If the feel property is setted in sad, when run the noise function, they cries
+
 

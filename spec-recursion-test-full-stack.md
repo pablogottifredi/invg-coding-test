@@ -1,9 +1,12 @@
-# Object oriented programming and recursion. Fullstack developer
+# Invg Test. Recursion Test
+Instruction for oriented programming and recursion test. Fullstack developer profile
+Related to [main document](../readme.md) 
+
 ## Goals
 Write here
 
 ## Spec
-There are a tree of categories, each node can have one or more children, and their children's also can have descendants successively
+There are a tree of categories, each node could have one or more children, and their children's also can have descendants successively
 
 Example of data
 
@@ -16,7 +19,7 @@ Example of data
    * Jazz
 
 ### Test 1. Read and print each path of tree
-Write a piece of code that list the full path of each categoriy from base node to each sheet (node without childrens), ordererd by sheet name asc
+Write a piece of code that lists the full path of each category from base node to each sheet (node without children), ordered by sheet-node name ascendent
 
 Expected data result
 ```
@@ -38,7 +41,7 @@ Nacional Viejito
 Nacional Moderno
 ```
 
-Ensure that piece of code writed in Test 1 obtain a result according the next sample data and outuut
+Ensure that piece of code written in Test 1 obtain a result according to the next sample data and output
 #### Aditional data and expected result
 * A
   * X
