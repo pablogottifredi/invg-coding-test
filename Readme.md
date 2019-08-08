@@ -2,7 +2,7 @@
 # Result
 
 # Spec
-## Section 1. Implementation Test - Coding
+## Section 1. Implementation Test - Coding - coding-test-fullstack
 
 ### Test 1 . Build an api Restful with the next enpoints:
 * Over the model ***incidents.by.helpdeks*** provide a GET operation with next parameters:
@@ -12,28 +12,32 @@
 
     Rules
     >    Filter text according field ***incidents.description*** using a %like%
+    >
     >    Detailed 0 return only incidents.id field filled
+    >
     >    Detailed 1 return full incidents fields filled
 
 
-* Over the movel ***incidents.by.helpdeks*** provide a GET operation with next parameters:
+* Over the model ***incidents.by.helpdeks*** provide a GET operation with next parameters:
     - helpdeks_id: Optional. Reference to a helpdesk ID to filter
     
     Rules
     >   Return top 5 of most searched string by id
+    >
     >   If helpdeks_id is null or undefined, return top 5 most key searched globaly
+    >
     >   Propose a database to persist key searched
 
 You can access to a live api endpoint in [this link](https://webdemo.cloud.invgate.net/api/v1)
 You can use the follow key credentials:
 ``` 
 user: apiuser
-token: 75NwxqPmAAEnebWS6PxJ94MH
+token: <the key provided>
 ``` 
 There are an endpoint to get the incidents.by.helpdeks by id
 ```
 - usage incidents.by.helpdesk?helpdesk_id=ID
-$ curl -X GET https://apiuser:75NwxqPmAAEnebWS6PxJ94MH@webdemo.cloud.invgate.net/api/v1/incidents.by.helpdesk?helpdesk_id=11
+$ curl -X GET https://apiuser:<the key provided>@webdemo.cloud.invgate.net/api/v1/incidents.by.helpdesk?helpdesk_id=11
 ```
 
 Response the follow data
@@ -48,7 +52,7 @@ Response the follow data
 then you can usage the incident?id enpoint (206 is and ID of previous request)
 ```
 - usage incident?id=206
-$ curl -X GET https://apiuser:75NwxqPmAAEnebWS6PxJ94MH@webdemo.cloud.invgate.net/api/v1/incident?id=206
+$ curl -X GET https://apiuser:<the key provided>@webdemo.cloud.invgate.net/api/v1/incident?id=206
 ```
 
 Response:
@@ -80,7 +84,7 @@ Response:
 }
 ```
 
-### Test 2. Provide and User Interface to write the text to search and get helpdesk tickets
+### Test 2. Provide an User Interface to write the text to search and get helpdesk tickets
 
 * Rules & behaviors
     >   Put and helpdeks ID and GET a detailed list of incident according that category
@@ -155,6 +159,7 @@ quilmes         fede
 
 ## Section 3. Object oriented programming and recursion - Coding
 There are a tree of categories, each node can have one or more children, and their children's also can have descendants successively
+
 Example of data
 
 * Genero
@@ -243,7 +248,4 @@ Optionaly provide a source code with the design proposed
 Additionaly to awake or sleep state, the pet must have a feel property, like happy/sad/other.
 If the feel property is setted in happy, when run the noise function, they laught
 If the feel property is setted in sad, when run the noise function, they cries
-
-
-
 
