@@ -1,7 +1,7 @@
 # Invg Test. Query Test
 Instruction for query test. Fullstack developer profile
 
-Related to [main document](https://github.com/pablogottifredi/invg-coding-tes/Readme.md)
+Related to [main document](https://github.com/pablogottifredi/invg-coding-test/blob/master/Readme.md)
 ## Goals
 Write here
 

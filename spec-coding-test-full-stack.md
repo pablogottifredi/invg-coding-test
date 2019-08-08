@@ -1,7 +1,7 @@
 # Invg Test. Implementation Test
 Instruction for coding test. Fullstack developer profile
 
-Related to [main document](https://github.com/pablogottifredi/invg-coding-test/Readme.md)
+Related to [main document](https://github.com/pablogottifredi/invg-coding-test/blob/master/Readme.md)
 
 ## Goals
 Write here

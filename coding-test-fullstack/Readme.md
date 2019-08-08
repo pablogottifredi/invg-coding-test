@@ -1,7 +1,7 @@
 
 # Api Invgate extension
 
-Provide a solution according the follow [spec](https://github.com/pablogottifredi/invg-coding-test/spec-coding-test-full-stack.md)
+Provide a solution according the follow [spec](https://github.com/pablogottifredi/invg-coding-test/blob/master/spec-coding-test-full-stack.md)
 
   
 
@@ -11,7 +11,7 @@ Install this pre-requisites and follow the steps
 
 * Docker CE
 [Install Docker Community Edition version 18.09.04 or up](https://docs.docker.com/install/linux/docker-ce/ubuntu/) according this instructions
-Need more help? Follow this instruction for [beginners users](https://github.com/pablogottifredi/invg-coding-test/docker-beginner-install.md)
+Need more help? Follow this instruction for [beginners users](https://github.com/pablogottifredi/invg-coding-test/blob/master/docker-beginner-install.md)
 
 * Docker Compose cli
 [Install Docker Compose cli](https://docs.docker.com/compose/install/)
