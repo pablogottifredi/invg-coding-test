@@ -1,4 +1,6 @@
-# Coding test spec. Fullstack developer
+# Invg Test. Implementation Test
+Instruction for coding test. Fullstack developer profile
+
 ## Goals
 Write here
 
@@ -12,9 +14,9 @@ Write here
 
     Rules
     >    Filter text according field ***incidents.description*** using a %like%
-    >
+
     >    Detailed 0 return only incidents.id field filled
-    >
+
     >    Detailed 1 return full incidents fields filled
 
 
@@ -23,9 +25,9 @@ Write here
     
     Rules
     >   Return top 5 of most searched string by id
-    >
+
     >   If helpdeks_id is null or undefined, return top 5 most key searched globaly
-    >
+
     >   Propose a database to persist key searched
 
 You can access to a live api endpoint in [this link](https://webdemo.cloud.invgate.net/api/v1)
@@ -88,6 +90,7 @@ Response:
 
 * Rules & behaviors
     >   Put a helpdeks ID and GET a detailed list of incident according that category
+    
     >   Filter over result in UI
 
 ### Test 3. Propose a solution to improve the performance
