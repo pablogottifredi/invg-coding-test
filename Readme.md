@@ -2,7 +2,7 @@
 
 ## Section 1. Implementation Test - Coding - coding-test-fullstack
 * [Follow the full spec here](spec-coding-test-full-stack.md)
-* [Test solution here](coding-test-full-stack/Readme.md)
+* [Test solution here](https://github.com/pablogottifredi/invg-coding-test/tree/master/coding-test-fullstack)
 
 ### Tests
 * Build an api with two enpoints:
