@@ -13,7 +13,7 @@ const AGENT_CACHE_PRE_INDEX = 'invgate.api.incident';
 var redis = require("redis"); 
 var cache_client = redis.createClient('redis://'+AGENT_CACHE_HOST+':'+AGENT_CACHE_PORT);
 cache_client.on("error", function (err) {
-    console.log('API invgate', 'error', 'agent invgate.api.incidents', 'error conneting with cache engine');
+    console.log('API invgate', 'error', 'agent invgate.api.incidents', 'error conneting with cache engine',err);
 });
 
 const helpdeskById = ( helpdesk_id ) => {
@@ -134,4 +134,29 @@ const incidentById = ( incident_id ) => {
     });
 };
 
-export default { helpdeskById, incidentById, incidentByIds }
+const addWordToRank = ( helpdesk_id, word ) => {
+    const cacheidx = AGENT_CACHE_PRE_INDEX+ENDPOINT_INCIDENTS_BY_HELPDESK+'/'+helpdesk_id+'/RANKING/WORDS';
+    const cacheidxglobal = AGENT_CACHE_PRE_INDEX+ENDPOINT_INCIDENTS_BY_HELPDESK+'/GLOBAL/RANKING/WORDS';
+    cache_client.zincrby( cacheidx, 1, word, () => {;} );
+    cache_client.zincrby( cacheidxglobal, 1, word,(r) => {;} );
+    return true;
+}
+
+const getWordFromRank = ( helpdesk_id ) => {
+    return new Promise( (resolve,reject) => {
+        const cacheidx = AGENT_CACHE_PRE_INDEX+ENDPOINT_INCIDENTS_BY_HELPDESK+'/'+helpdesk_id+'/RANKING/WORDS';
+        cache_client.zrevrange( cacheidx, 0, 4, (err,rank)=>{
+            resolve(rank);
+        });
+    });
+};
+const getWordFromGlobalRank = ( ) => {
+    return new Promise( (resolve,reject) => {
+        const cacheidxglobal = AGENT_CACHE_PRE_INDEX+ENDPOINT_INCIDENTS_BY_HELPDESK+'/GLOBAL/RANKING/WORDS';
+        cache_client.zrevrange( cacheidxglobal, 0, 4, (err,rank)=>{
+            resolve(rank);
+        });
+    });
+};
+
+export default { helpdeskById, incidentById, incidentByIds, addWordToRank, getWordFromRank, getWordFromGlobalRank  }

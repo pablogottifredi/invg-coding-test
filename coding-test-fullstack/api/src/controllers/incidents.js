@@ -31,6 +31,16 @@ const read = (req, res, next) => {
                 var f = incidents.filter( (e) =>{ return e.title.toLowerCase().includes(t) || e.description.toLowerCase().includes(t) });
                 let detailed = req.query.detailed || 0;
                 var m = detailed==0? f.map( (e) => { return  { id: e.id, title: '', description: ''} } ) : f;
+                //eval exact match prev to add
+                if (m.length > 0) {
+                    var onlymatch = incidents.filter( (e) =>{ return exactmatch(t, e.title.toLowerCase() + ' ' + e.description.toLowerCase() ) });
+                    if (onlymatch.length > 0){
+                        console.log( 'word', t,'full match','added to rank');
+                        agent.addWordToRank( req.query.helpdesk_id, t );
+                    }
+                    else 
+                        console.log( 'word', t,'partial match','not added');
+                }
                 res.status(200).send( m );
             });
             
@@ -45,8 +55,34 @@ const read = (req, res, next) => {
 
 const tags = (req, res, next) => {
     const errors = validationResult( req );
-    console.log(errors.isEmpty());
     if (!errors.isEmpty()) return res.status(428).send( { code: '428', message: errors.array({onlyFirstError:true})[0].msg });
-    res.status(200).send( [ { tag: "network problem", count: 10}, { tag: "login not connected", count: 8 }, { tag: "file not found", count: 3 }] );
+    let id = req.query.helpdesk_id;
+    if (id) { 
+        agent.getWordFromRank( id )
+            .then( (data) => {
+                let r = (data || []).filter((e) => e!==null && e !== '').map( el => { return { tag: el }});
+                res.status(200).send( r );
+            })
+            .catch( (err) => {
+                res.status(500).send( { code: 500, message: 'internal server error'});
+            });
+    } else {
+        agent.getWordFromGlobalRank( )
+            .then( (data) => {
+                let r = (data || []).filter((e) => e!==null && e !== '').map( el => { return { tag: el }});
+                res.status(200).send( r );
+            })
+            .catch( (err) => {
+                res.status(500).send( { code: 500, message: 'internal server error'});
+            });
+    }
+
 } 
+
+const exactmatch = (text, searchWords) => {
+    var reg = '\\b'+text+'\\b';
+    var r = new RegExp(reg).test(searchWords);
+    return r;
+}
+
 export default { read, tags, validate }

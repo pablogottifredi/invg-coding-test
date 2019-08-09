@@ -114,7 +114,7 @@
         "tags": [
           "incidents.by.helpesk"
         ],
-        "description": "Return top 5 most searched string. Filtered by helpdesk id. If not define id, return global ranking",
+        "description": "Return top 5 most searched string. Filtered by helpdesk id. If not define id, return global ranking. Partial words are not indexed",
         "operationId": "getSearchTextIncidentsRankHelpdesk",
         "parameters": [
           {
@@ -179,7 +179,7 @@
       },
       "searchIncidentsTagsRankingResponse": {
         "properties": {
-          "name": {
+          "tag": {
             "type": "string"
           }
         }

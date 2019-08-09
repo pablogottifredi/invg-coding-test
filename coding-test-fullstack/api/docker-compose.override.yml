@@ -29,4 +29,6 @@ services:
       - "5003:80"
     
   api-invgate-cache:
-   
+   ports:
+      - "5004:6379"
+  
