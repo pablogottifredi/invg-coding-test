@@ -10,11 +10,21 @@ services:
       dockerfile: Dockerfile
     command: yarn start
     image: api-invgate-facade
+    depends_on:
+      - api-invgate-cache
     networks:
       api-invgate-backend-network:
         aliases:
           - api-invgate-facade
 
+  api-invgate-cache:
+    restart: always
+    container_name: api-invgate-cache
+    image: redis:buster
+    networks:
+      api-invgate-backend-network:
+        aliases:
+          - api-invgate-cache
 
   api-invgate-doc:
     image: swaggerapi/swagger-ui

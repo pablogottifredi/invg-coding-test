@@ -1,18 +1,23 @@
 import config from '../config';
 import agent from '../agents/invgate.api.incidents';
-const { body, query, validationResult } = require('express-validator/check')
+const { body, query, check, validationResult } = require('express-validator/check')
 
 const validate = (method) => {
     switch (method) {
-    case 'get': {
-     return [ 
-         query('helpdesk_id', 'helpdesk_id mandatory').exists(),
-         query('helpdesk_id', 'helpdesk_id invalid').isInt({min:0}),
-         query('detailed').isIn(['0', '1', undefined]),
-         query('text_to_search').escape()
-       ]   
+        case 'get': {
+            return [ 
+                query('helpdesk_id', 'helpdesk_id mandatory').exists(),
+                query('helpdesk_id', 'helpdesk_id invalid').isInt({min:0}),
+                query('detailed').isIn(['0', '1', undefined]),
+                query('text_to_search').escape()
+            ]   
+        }
+        case 'tags': {
+            return [
+                query('helpdesk_id', 'helpdesk_id must have a valid Id or not be sent').optional().isInt({min:0})   
+            ]
+        }
     }
-  }
 }
 const read = (req, res, next) => {
     const errors = validationResult( req );
@@ -31,14 +36,17 @@ const read = (req, res, next) => {
             
         })
         .catch(( error => {
-            if (error.code == 428) console.error('API invgate','error', 'incidents', "unespected preconditions errors");
+            if (error.code == 428) console.error('API invgate','error', 'incidents', "unexpected preconditions errors");
             let errorExposed = (error.code && error.code != 428)?{ code: 500, message: 'internal server error'}:{ code: error.code, message: error.message };
             res.status( errorExposed.code ).send( errorExposed);
         }));
  
 }
 
-const tags = (req, res, next) =>
+const tags = (req, res, next) => {
+    const errors = validationResult( req );
+    console.log(errors.isEmpty());
+    if (!errors.isEmpty()) return res.status(428).send( { code: '428', message: errors.array({onlyFirstError:true})[0].msg });
     res.status(200).send( [ { tag: "network problem", count: 10}, { tag: "login not connected", count: 8 }, { tag: "file not found", count: 3 }] );
-
+} 
 export default { read, tags, validate }

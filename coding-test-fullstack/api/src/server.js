@@ -10,7 +10,7 @@ import routes from './routes/base';
 const expressValidator = require('express-validator');
 
 const api = express();
-api.use(cors());
+api.use(cors()); 
 api.use(compression()); 
 api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json()); 

@@ -1,7 +1,7 @@
 {
   "name": "api-node-invgate-facade",
   "version": "1.0.0",
-  "description": "Api Node 8 facade invgate api only for test purposes",
+  "description": "Api Node 12 facade invgate api only for test purposes",
   "main": "index.js",
   "author": "Pablo A. Gottifredi",
   "license": "ISC",
@@ -32,6 +32,8 @@
     "express-validator": "^5.1.2",
     "pkginfo": "^0.4.1",
     "pug": "^2.0.3",
+    "redis": "^2.8.0",
+    "redis-app": "^0.13.6",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "uuid": "^3.3.2"

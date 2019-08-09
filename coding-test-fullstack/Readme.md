@@ -86,8 +86,8 @@ Docker compose create a enviroment with
 * An ***API Restfull*** in NodeJS v12 with endpoin required
 * An ***Swagger-UI doc*** interface to open api spec and test
 * An ***API Gateway*** in nginx to define the specific routing for nano/microservice
+* An ***API cache*** in a Redis 5, to temporal cache of agent requests
 
-  
 
 ### Problem with ports?
 
@@ -138,6 +138,7 @@ We use ***stronger names*** to containers, you could have problems if you have d
 * API Restfull NodeJS v12 use ***api-invgate-facade***
 * API Doc use ***api-invgate-doc***
 * API Gateway use ***api-invgate-gateway***
+* API Cache ***api-invgate-cache***
 
   
 #### Do you need see logs?
