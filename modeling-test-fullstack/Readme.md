@@ -37,7 +37,7 @@ $ cd invg-coding-test
 
 All the environment is ready to use without aditional install
 
-> Use  _**docker-compose up -d**_  into coding-test-full-stack folder
+> Use  _**docker-compose up**_  into modeling-test-fullstack folder
 
 ```
 :~invg-coding-test/modeling-test-fullstack$ docker-compose up
