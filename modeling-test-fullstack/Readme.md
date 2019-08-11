@@ -11,6 +11,9 @@ Install this pre-requisites and follow the steps
 -   Docker Compose cli  [Install Docker Compose cli](https://docs.docker.com/compose/install/)
     
 
+## Quickview
+The entire code is (here)[main.py]
+
 ## Getting started
 
 ### 1. Get from repo
