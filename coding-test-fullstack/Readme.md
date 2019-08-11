@@ -173,3 +173,27 @@ $ curl -X GET "http://localhost:5003/api/v2/incidents.by.helpdesk/search/?helpde
 
 
 > Open in a terminal **http://localhost:5003/api/doc/**
+
+
+
+### Additional comments About Performance
+The solution was designed using Redis cache preset in 360 seconds. 
+
+The agent of API use cache to improve the response speed. Is possible config the cache with persistence according to engine features. 
+
+The solution was not provided with that config set.
+
+The technique used allows increasing the performance-on-demand of request and searches but has low performance in the first request. 
+
+There are two ways to offer a complete performance. 
+
+* Providing an endpoint to pre-cache data. 
+    This approach needs a model synchronization process starting when the model's "incidents" and "incidents by request" has changed. 
+    
+    The common method could be adding to the queue process each time that rows changes and send a POST message to the endpoint proposed.
+
+* Mount a replica of data, redundant in a specific engine designed for search, like Elastic Search. 
+
+    This solution simplifies the architecture of API, delegating the liability of cache and search using regular expressions. 
+    
+    Although this approach is not a complete warranty of models synchronized (slight inconsistency) is the best solution for a massive quantity of data.

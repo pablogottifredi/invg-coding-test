@@ -57,3 +57,4 @@ networks:
   api-invgate-backend-network:
     name: "api-invgate-backend-network"
     driver: "bridge"
+ 

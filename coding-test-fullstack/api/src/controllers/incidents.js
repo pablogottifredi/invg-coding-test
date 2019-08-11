@@ -34,7 +34,7 @@ const read = (req, res, next) => {
                 //eval exact match prev to add
                 if (m.length > 0) {
                     var onlymatch = incidents.filter( (e) =>{ return exactmatch(t, e.title.toLowerCase() + ' ' + e.description.toLowerCase() ) });
-                    if (onlymatch.length > 0){
+                    if (t.length > 2 && onlymatch.length > 0){
                         console.log( 'word', t,'full match','added to rank');
                         agent.addWordToRank( req.query.helpdesk_id, t );
                     }

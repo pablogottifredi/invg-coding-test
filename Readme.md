@@ -7,14 +7,14 @@
 ### Tests
 * Build an api with two enpoints:
   - [x] Search by text over incidents
-  - [ ] Show ranking tags
+  - [x] Show ranking tags
 
 * Provide a user interface
   - [ ] To type text and search
   - [ ] To show ranking
 
 * Propose improve
-  - [ ] Propose solution to improve performance
+  - [x] Propose solution to improve performance
 
 ## Section 2. Implementation Test - Querying - querying-test-fullstack
 * [Follow the full spec here](spec-querying-test-full-stack.md)
