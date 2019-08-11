@@ -12,7 +12,7 @@ Install this pre-requisites and follow the steps
     
 
 ## Quickview
-The entire code is (here)[main.py]
+The entire code is open main.py
 
 ## Getting started
 
