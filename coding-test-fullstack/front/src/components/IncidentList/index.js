@@ -26,8 +26,7 @@ class IncidentList extends React.Component {
         super(props);
         this.state = {
             incidents: [ ],
-            text: '',
-            detailed: 1
+            error: ''
         }
         
        
@@ -42,12 +41,17 @@ class IncidentList extends React.Component {
         this.props.onAgentStart();
         if (this.props.helpdeskid) {
             this.setState( {loading: true });
-            agent.Incidents.search( { id: this.props.helpdeskid, text: this.props.text, detailed: this.props.detailed} , (err)=>{ console.log("fail"); } )
+            agent.Incidents.search( { id: this.props.helpdeskid, text: this.props.text, detailed: this.props.detailed!="onlyid"?1:0} , (err)=>{ console.log("fail"); } )
                 .then( (data) =>{
-                    this.setState( { loading: false });
+                    this.setState( { loading: false, error:'' });
                     this.setState( { incidents: data, fetched: new Date().toUTCString() });
                     this.props.onAgentEnd();
-                });
+                }, (err) => {
+                    this.setState( { error: 'Problem getting data' + err.message, loading:false })
+                    this.props.onAgentFail()
+                    
+                })
+        
             }
         }
     componentDidUpdate = (oldProps) => {
@@ -112,6 +116,8 @@ class IncidentList extends React.Component {
             <div className="col s10">
                 <div className="row">
                     { this.loadingdata( loading )}
+                    <p>{this.state.error}</p>
+
                 </div>
                 <div className="row">
                     <h6>Incidents of helpdesk #{helpdeskid} - ({incidents.length}) records matchs</h6>

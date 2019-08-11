@@ -16,7 +16,7 @@ import {
 import Timer from '../Timer';
 
 const mapStateToProps = state => ({
-  ...state.timer,...state.search
+     ...state.search
   });
 
 const mapDispatchToProps = dispatch => ({
@@ -34,6 +34,7 @@ class Tags extends React.Component {
       tags: [],
       fetched: '',
       global: false,
+      error: ''
     };
     this.global = props.global;
     this.componentWillMount = ()=>{
@@ -47,21 +48,21 @@ class Tags extends React.Component {
       if (this.global) {
         agent.Tags.getAll()
           .then( (data) =>{
-            this.setState( { tags: data, fetched: new Date().toUTCString() });
+            this.setState( { tags: data, fetched: new Date().toUTCString(),  error:'' });
             this.props.onAgentEnd();
             this.props.onDataChanged(data);
-          })
-          .catch( (err) => {
+          }, (err) => {
+            this.setState( { error: 'Problem getting data' + err.message })
             this.props.onAgentFail()
           })
       } else {
         agent.Tags.getByHelpDeskId(this.props.helpdeskid)
           .then( (data) =>{
-            this.setState( { tags: data, fetched: new Date().toUTCString() });
+            this.setState( { tags: data, fetched: new Date().toUTCString() , error:''});
             this.props.onAgentEnd();
             this.props.onDataChanged(data);
-          })
-          .catch( (err) => {
+          }, (err) => {
+            this.setState( { error: 'Problem getting data' + err.message })
             this.props.onAgentFail()
           })
       }
@@ -97,7 +98,7 @@ class Tags extends React.Component {
   render() {
     const tags = (this.state.tags && this.state.tags.length)?this.state.tags: [{ tag: 'no data' }];
     const handle = (this.state.tags.length > 0);
-    const mustrender = (tags && (this.global || !this.global )  );
+    const mustrender = (tags && (this.global || (!this.global && this.props.helpdeskid) )  );
     if (mustrender) {
       return (
         <div>
@@ -114,7 +115,8 @@ class Tags extends React.Component {
             </div>
             <div className="row">
               <label>Data fetched at: {this.state.fetched} </label>
-              <Timer seconds="100" reset="true" message="Data will expire in"/>
+              <p>{this.state.error}</p>
+              <Timer seconds="10" reset="true" message="Data will expire in"/>
             </div>
           </div>
         </div>
