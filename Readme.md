@@ -35,5 +35,5 @@
 
 ## Section 4. Modeling a pet - modeling-pet
 * [Follow the full spec here](spec-modeling-test-full-stack.md)
-* [Test solution here]((https://github.com/pablogottifredi/invg-coding-test/tree/master/modeling-test-fullstack)
+* [Test solution here](https://github.com/pablogottifredi/invg-coding-test/tree/master/modeling-test-fullstack)
 
