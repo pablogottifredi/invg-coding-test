@@ -2,10 +2,10 @@ const uuid = require('uuid/v1');
 const request = require('request-promise');
 const Joi = require('@hapi/joi');
 
-const ENDPOINT_BASE_ROUTE = 'https://webdemo.cloud.invgate.net/api/v1';
+const ENDPOINT_BASE_ROUTE =  process.env.API_BASE_ROUTE;
 const ENDPOINT_INCIDENTS_BY_HELPDESK = '/incidents.by.helpdesk';
 const ENDPOINT_INCIDENTS_BY_ID = '/incident';
-const ENDPOINT_COMMON_AUTH = { auth: { user: 'apiuser', pass: '75NwxqPmAAEnebWS6PxJ94MH', sendImmediately: true }};
+const ENDPOINT_COMMON_AUTH = { auth: { user: process.env.API_USERNAME, pass: process.env.API_PASSWORD, sendImmediately: true }};
 const AGENT_CACHE_HOST = 'api-invgate-cache';
 const AGENT_CACHE_PORT = 6379;
 const AGENT_CACHE_EXPIRATION = 360;
