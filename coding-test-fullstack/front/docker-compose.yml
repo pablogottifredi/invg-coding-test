@@ -4,11 +4,10 @@ services:
   front-invgate:
     restart: always
     container_name: front-invgate
-    env_file: .env
     build: 
       context: .
       dockerfile: Dockerfile
-    command: yarn start
+    command: yarn build
     image: front-invgate
     networks:
       - api-invgate-backend-network

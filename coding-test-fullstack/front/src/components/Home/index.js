@@ -34,9 +34,6 @@ export class Home extends React.Component {
     
   }
 
-  componentWillUnmount() {
-    this.props.onUnload();
-  }
 
   render() {
     return (

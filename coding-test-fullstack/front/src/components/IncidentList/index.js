@@ -41,7 +41,7 @@ class IncidentList extends React.Component {
         this.props.onAgentStart();
         if (this.props.helpdeskid) {
             this.setState( {loading: true });
-            agent.Incidents.search( { id: this.props.helpdeskid, text: this.props.text, detailed: this.props.detailed!="onlyid"?1:0} , (err)=>{ console.log("fail"); } )
+            agent.Incidents.search( { id: this.props.helpdeskid, text: this.props.text, detailed: this.props.detailed!=="onlyid"?1:0} , (err)=>{ console.log("fail"); } )
                 .then( (data) =>{
                     this.setState( { loading: false, error:'' });
                     this.setState( { incidents: data, fetched: new Date().toUTCString() });
@@ -109,7 +109,8 @@ class IncidentList extends React.Component {
          } else { return ( <div className="min-height-loading" ></div>)}
     }
     render() {
-        const incidents = this.state.incidents;
+        const incidents = this.state.incidents || [];
+        const records = (incidents && incidents.length)?incidents.length:0;
         const loading = this.state.loading;
         const helpdeskid = this.props.helpdeskid;
         return (
@@ -120,7 +121,7 @@ class IncidentList extends React.Component {
 
                 </div>
                 <div className="row">
-                    <h6>Incidents of helpdesk #{helpdeskid} - ({incidents.length}) records matchs</h6>
+                    <h6>Incidents of helpdesk #{helpdeskid} - ({records}) records matchs</h6>
                 </div> 
                 <div className="row collection">
                 {   

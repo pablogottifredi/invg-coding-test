@@ -97,7 +97,7 @@ class Tags extends React.Component {
   }
   render() {
     const tags = (this.state.tags && this.state.tags.length)?this.state.tags: [{ tag: 'no data' }];
-    const handle = (this.state.tags.length > 0);
+    const handle = (this.state.tags && this.state.tags.length > 0);
     const mustrender = (tags && (this.global || (!this.global && this.props.helpdeskid) )  );
     if (mustrender) {
       return (

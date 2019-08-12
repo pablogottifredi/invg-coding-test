@@ -10,8 +10,8 @@
   - [x] Show ranking tags
 
 * Provide a user interface
-  - [ ] To type text and search
-  - [ ] To show ranking
+  - [x] To type text and search
+  - [x] To show ranking
 
 * Propose improve
   - [x] Propose solution to improve performance

@@ -33,7 +33,7 @@ class Search extends React.Component {
     }
     componentDidUpdate(){
         if (this.state.helpdeskid && this.state.helpdeskid !== ''){
-            this.props.onComponentChange( this.state.text,this.state.helpdeskid, this.state.detailed=='checked'?"detailed":"onlyid")
+            this.props.onComponentChange( this.state.text,this.state.helpdeskid, this.state.detailed==='checked'?"detailed":"onlyid")
         }
     }
 

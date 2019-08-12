@@ -16,6 +16,18 @@ Need more help? Follow this instruction for [beginners users](https://github.com
 
   
 
+## Quick instructions
+* Clone from [here](https://github.com/pablogottifredi/invg-coding-test.git) 
+* Go to invg-coding-test folder
+* Run cp api/.env.example api/.env
+* Add your credential in KEY API_PASSWORD in api/.env 
+* Run docker-compose up -d --build
+* Open http://localhost:5005 to access a Front 
+* Open http://localhost:5003/api/doc to access to doc and test env for API
+
+Good luck!
+
+
 ## Getting started
 
 ### 1. Get from repo
@@ -27,59 +39,55 @@ Clone using your own credentials from repo [https://github.com/pablogottifredi/i
 $ git clone https://github.com/pablogottifredi/invg-coding-test.git
 ```
 
-  
 
-### 2. Access to subfolder
+### 2. Access to subfolder of API and config .env file
 
 ```
 $ cd invg-coding-test
 ~:invg-coding-test$ cd coding-test-full-stack
+~:invg-coding-test/coding-test-full-stack$ cd api
+~:invg-coding-test/coding-test-full-stack/api$
 ```
 
-  
-
-### 3. Config your .env file
-
-Copy .env.example and edit with the credentials provided
+#### 3 Config .env file of API
+Copy .env.example to .env edit with the credentials provided
 
 ```
-$ cp .env.example .env
-$ vi .env
+~:invg-coding-test/coding-test-full-stack/api$ cp .env.example .env
+~:invg-coding-test/coding-test-full-stack/api$ vi .env
 ```
-
-  
 
 Keys to config
 
 ```
-
 API_USERNAME=apiuser
 API_PASSWORD=<a key>
 API_AUTH_METHOD=basic
+API_BASE_ROUTE=https://webdemo.cloud.invgate.net/api/v1
 
 ```
 
-  
+> PROJECT FRONT ARE NOT CONFIGURED WEBPACK YET
+> USES A STATIC CONFIG OF GATEWAY at http://localhost:5003/api/v2
+> [agent of incidents](/src/components/IncidentList/agent.js) and [agent of tags](/src/components/Tags/agent.js)
+
 
 ### 4. Run using docker-compose
 
 All the environment is ready to use without aditional install
 
-  
-
 > Use ***docker-compose up -d*** into coding-test-full-stack folder
-
   
 
 ```
 :~invg-coding-test/coding-test-full-stack$ docker-compose up -d
 ```
 
- 
+
+
 Ready!
 
   
-
 ## Environment info
 Docker compose create a enviroment with
 
@@ -87,42 +95,39 @@ Docker compose create a enviroment with
 * An ***Swagger-UI doc*** interface to open api spec and test
 * An ***API Gateway*** in nginx to define the specific routing for nano/microservice
 * An ***API cache*** in a Redis 5, to temporal cache of agent requests
+* An ***A Web Page with UI to test*** in a React, component oriented desing
 
 
 ### Problem with ports?
 
-When you launch **docker-compose up -d**, the project use the config in [docker-compose.yml](./api/docker-compose.yml) and [docker-compose.override.yml](./api/docker-compose.override.yml)
+When you launch **docker-compose up -d**, the project use the config in [docker-compose.yml](./docker-compose.yml) and [docker-compose.override.yml](./docker-compose.override.yml)
 
   
-
-For develop pruposes are mapped directly the internal ports to external container. Specifically in [docker-compose.override.yml](./api/docker-compose.override.yml) file
+For develop pruposes are mapped directly the internal ports to external container. Specifically in [docker-compose.override.yml](./docker-compose.override.yml) file
 
   
 See the config:
 ```
 version: "3.5"
-services:
+    services:
+        api-invgate-facade:
+            ports:
+            - "5000:3000"
 
-api-invgate-facade:
-...
-ports:
-- "5000:3000"
+        api-invgate-doc:
+            ports:
+            - "5001:8080"
 
-api-invgate-doc:
-...
-ports:
-- "5001:8080"
-...
+        api-invgate-gateway:
+            ports:
+            - "5003:80"
 
-api-invgate-gateway:
-...
-ports:
-- "5003:80"
-
+        front-invgate:
+            ports:
+            - "5005:4100"
 ```
 
-  
-This project **only needs the api gateway port opened***. If you have ports listen in ***5000,5001*** you can delete this config or change
+This project **only needs the api gateway port opened***. If you have ports listen in ***5000,5001,5003,5005*** you can delete this config or change
 
   
 > ***Warning!***
@@ -139,7 +144,7 @@ We use ***stronger names*** to containers, you could have problems if you have d
 * API Doc use ***api-invgate-doc***
 * API Gateway use ***api-invgate-gateway***
 * API Cache ***api-invgate-cache***
-
+* FRONT invgate use ***front-invgete***
   
 #### Do you need see logs?
 Open a terminal with each log
@@ -155,7 +160,12 @@ For API Gateway
 $ docker container logs api-invgate-gateway -f
 ```
 
-  
+
+For FRONT
+```
+$ docker container logs front-invgate -f
+```
+
 
 ### How to test?
 
@@ -172,7 +182,12 @@ $ curl -X GET "http://localhost:5003/api/v2/incidents.by.helpdesk/search/?helpde
  Or be a human being and test accross the documentation interface
 
 
-> Open in a terminal **http://localhost:5003/api/doc/**
+> Open in a browser **http://localhost:5003/api/doc/**
+
+
+For FRONT
+
+> Open in a browser **http://localhost:5005/**
 
 
 

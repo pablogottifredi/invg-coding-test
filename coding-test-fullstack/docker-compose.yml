@@ -4,11 +4,11 @@ services:
   api-invgate-facade:
     restart: always
     container_name: api-invgate-facade
-    env_file: .env
+    env_file: ./api/.env
     build: 
-      context: .
+      context: ./api/.
       dockerfile: Dockerfile
-    command: yarn watch
+    command: yarn watch 
     image: api-invgate-facade
     depends_on:
       - api-invgate-cache
@@ -30,9 +30,9 @@ services:
     image: swaggerapi/swagger-ui
     container_name: api-invgate-doc
     volumes:
-      - ./doc/openapi.json:/openapi.json
+      - ./api/doc/invgate.api.v2.openapi.json:/invgate.api.v2.openapi.json
     environment:
-      SWAGGER_JSON: /openapi.json
+      SWAGGER_JSON: /invgate.api.v2.openapi.json
     networks:
       api-invgate-backend-network:
         aliases:
@@ -43,15 +43,26 @@ services:
     image: nginx:alpine
     container_name: api-invgate-gateway
     restart: always
-    ports:
-      - "5003:80"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./api/nginx/conf.d:/etc/nginx/conf.d
     networks:
       - api-invgate-backend-network
     depends_on:
       - api-invgate-facade
       - api-invgate-doc
+
+  front-invgate:
+    restart: always
+    container_name: front-invgate
+    build: 
+      context: ./front/.
+      dockerfile: Dockerfile
+    command: yarn start
+    image: front-invgate
+    networks:
+      - api-invgate-backend-network
+    depends_on:
+      - api-invgate-gateway
 
 networks:
   api-invgate-backend-network:
