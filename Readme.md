@@ -18,7 +18,7 @@
 
 ## Section 2. Implementation Test - Querying - querying-test-fullstack
 * [Follow the full spec here](spec-querying-test-full-stack.md)
-* Test solution here
+* [Test solution here](https://github.com/pablogottifredi/invg-coding-test/tree/master/querying-test-full-stack)
 
 ### Tests
 * Compose a sentence

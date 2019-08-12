@@ -15,6 +15,15 @@ Install this pre-requisites and follow the steps
 ## Quickview
 The entire code here, just open [data.dump.sql](https://github.com/pablogottifredi/invg-coding-test/tree/master/querying-test-full-stack/blob/master/data.dump.sql)
 
+## Short anwser
+``` 
+select DISTINCT on (1)
+city,customer
+from sales
+order by city,mount desc, customer asc;
+``` 
+
+
 ## Getting started
 
 ### 1. Get from repo
