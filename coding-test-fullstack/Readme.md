@@ -18,10 +18,10 @@ Need more help? Follow this instruction for [beginners users](https://github.com
 
 ## Quick instructions
 * Clone from [here](https://github.com/pablogottifredi/invg-coding-test.git) 
-* Go to invg-coding-test folder
+* Go to invg-coding-test/coding-test-fullstack folder
 * Run cp api/.env.example api/.env
 * Add your credential in KEY API_PASSWORD in api/.env 
-* Run docker-compose up -d --build
+* OVER the folder inv-coding-test/coding-test-fullstack run ***docker-compose up -d --build***
 * Open http://localhost:5005 to access a Front 
 * Open http://localhost:5003/api/doc to access to doc and test env for API
 
