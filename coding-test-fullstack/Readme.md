@@ -21,7 +21,7 @@ Need more help? Follow this instruction for [beginners users](https://github.com
 * Go to invg-coding-test/coding-test-fullstack folder
 * Run cp api/.env.example api/.env
 * Add your credential in KEY API_PASSWORD in api/.env 
-* OVER the folder inv-coding-test/coding-test-fullstack run ***docker-compose up -d --build***
+* ***OVER*** the folder inv-coding-test/***coding-test-fullstack*** run ***docker-compose up -d --build***
 * Open http://localhost:5005 to access a Front 
 * Open http://localhost:5003/api/doc to access to doc and test env for API
 
@@ -68,8 +68,10 @@ API_BASE_ROUTE=https://webdemo.cloud.invgate.net/api/v1
 ```
 
 > PROJECT FRONT ARE NOT CONFIGURED WEBPACK YET
+
 > USES A STATIC CONFIG OF GATEWAY at http://localhost:5003/api/v2
-> [agent of incidents](/src/components/IncidentList/agent.js) and [agent of tags](/src/components/Tags/agent.js)
+
+> [agent of incidents](https://github.com/pablogottifredi/invg-coding-test/blob/master/coding-test-fullstack/front/src/components/IncidentList/agent.js) and [agent of tags](https://github.com/pablogottifredi/invg-coding-test/blob/master/coding-test-fullstack/front/src/components/Tags/agent.js)
 
 
 ### 4. Run using docker-compose
