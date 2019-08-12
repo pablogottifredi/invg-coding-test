@@ -22,7 +22,7 @@
 
 ### Tests
 * Compose a sentence
-  - [ ] Group a set of data according the spec
+  - [*] Group a set of data according the spec
 
 
 ## Section 3. Object oriented programming and recursion - recursion-tree

@@ -13,7 +13,7 @@ Install this pre-requisites and follow the steps
 -   [Npm](https://www.npmjs.com/get-npm) or yarn
 
 ## Quickview
-The entire code here, just open [data.dump.sql](https://github.com/pablogottifredi/invg-coding-test/tree/master/querying-test-full-stack/blob/master/data.dump.sql)
+The entire code here, just open [data.dump.sql](https://github.com/pablogottifredi/invg-coding-test/blob/master/querying-test-full-stack/data/data.dump.sql)
 
 ## Short anwser
 ``` 
