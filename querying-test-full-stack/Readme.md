@@ -49,7 +49,7 @@ All the environment is ready to use without aditional install
 > Use  _**docker-compose up -d**_  into querying-test-full-stack folder
 
 ```
-:~invg-coding-test/querying-test-full-stack$ docker-compose up -data
+:~invg-coding-test/querying-test-full-stack$ docker-compose up -d
 :~invg-coding-test/querying-test-full-stack$ npm run build 
 
 ```

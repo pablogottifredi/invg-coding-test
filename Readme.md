@@ -25,9 +25,10 @@
   - [X] Group a set of data according the spec
 
 
-## Section 3. Object oriented programming and recursion - recursion-tree
+## Section 3. Recursion - recursion-tree
 * [Follow the full spec here](spec-recursion-test-full-stack.md)
-* Test solution here
+* [Test solution here](https://github.com/pablogottifredi/invg-coding-test/tree/master/recursion-test-full-stack)
+
 
 ### Tests
 * Read and print each path of tree
