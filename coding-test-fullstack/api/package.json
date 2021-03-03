@@ -31,7 +31,7 @@
     "express": "^4.16.4",
     "express-validator": "^5.1.2",
     "pkginfo": "^0.4.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "redis": "^2.8.0",
     "redis-app": "^0.13.6",
     "request": "^2.88.0",
